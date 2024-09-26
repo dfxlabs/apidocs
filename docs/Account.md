@@ -47,10 +47,11 @@ User Api
 ## GET `/api/v1/account/balance`
 
 
+
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | account ID |
-| token             | STRING    | NO | Pair Code,eg:'ETH'
+| accountId | STRING | YES | Account ID |
+| token             | STRING    | NO | Token Code, e.g. `ETH`
 
 
 
@@ -103,17 +104,18 @@ User Api
 # 3、 Get Account Trade List information.
 ## GET `/api/v1/account/trades`
 
+
+
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | NO | Trading pair,eg:`BTC-USDT` |
-| accountId | STRING | NO | account's ID |
-| orderId | LONG | NO | order's ID |
-| fromId | LONG | NO | Starting tradeId |
-| startTime | LONG | NO | Start timestamp of conditional query, Based on order creation time.|
-| endTime | LONG | NO | End timestamp of conditional query, Based on order creation time. |
-| limit | INTEGER | NO | The number of items returned per query is 10 by default, with a maximum limit of 100 items. |
-
-
+| symbol | STRING | NO | Trading pair, e.g. `BTC-USDT` |
+| accountId | STRING | NO | Account ID |
+| orderId | LONG | NO | Order ID |
+| fromId | LONG | NO | Start from tradeId, exclusive  |
+| startTime | LONG | NO | Start timestamp on order creation time |
+| endTime | LONG | NO | End timestamp on order creation time |
+| limit | INTEGER | NO | 10 by default, with a maximum limit of 100 items |
+#### *Trades are returned in descending order of tradeId
 
 
 ``` java
