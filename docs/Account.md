@@ -114,7 +114,7 @@ User Api
 | fromId | LONG | NO | Start from tradeId, exclusive  |
 | startTime | LONG | NO | Start timestamp on order creation time |
 | endTime | LONG | NO | End timestamp on order creation time |
-| limit | INTEGER | NO | 10 by default, with a maximum limit of 100 items |
+| limit | INTEGER | NO | The number of items returned by each query, default 10, max 100 |
 #### *Trades are returned in descending order of tradeId
 
 
