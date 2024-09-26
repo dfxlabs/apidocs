@@ -59,16 +59,16 @@
     Sample Payload below:
 ``` java
 	{
-  	"code": "0",
-  	"msg": "success",
-  	"data": {
-            "id": "85",
-            "price": "17",
-            "qty": "0.1",
-            "quoteQty": "1.7",
-            "time": "1681873639235",
-            "buyerMaker": false
-  	}
+	  	"code": "0",
+	  	"msg": "success",
+	  	"data": {
+	            "id": "85",
+	            "price": "17",
+	            "qty": "0.1",
+	            "quoteQty": "1.7",
+	            "time": "1681873639235",
+	            "buyerMaker": false
+	  	}
 	}
 ```
 * Data is returned in **ascending** order. Oldest first, newest last.
