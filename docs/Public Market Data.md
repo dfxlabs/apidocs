@@ -1,3 +1,6 @@
+Market
+===========
+
 # 1. Get Depth information
 
 ## GET `/api/v1/spot/depth`
