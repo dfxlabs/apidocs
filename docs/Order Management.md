@@ -12,14 +12,14 @@ Order Management
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair |
-| accountId | STRING | YES | user's accountId |
-| side | STRING | YES | order direction. eg: `BUY` or `SELL` |
-| type | STRING | YES | orderType eg:`LIMIT`. `MARKET`. |
-| price | BIGDECIMAL | NO | Order Price |
-| quantity | BIGDECIMAL | NO | Order Quantity |
-| amount | BIGDECIMAL | NO | Order Amount |
-| clientOrderId | STRING | NO | Order id pass by api user |
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
+| accountId | STRING | YES | Account ID |
+| side | STRING | YES | Order direction, e.g. `BUY` or `SELL` |
+| type | STRING | YES | Order type, e.g. `LIMIT` or `MARKET` |
+| price | BIGDECIMAL | NO (required for LIMIT order) | Order Price |
+| quantity | BIGDECIMAL | NO (required for LIMIT order) | Order Quantity |
+| amount | BIGDECIMAL | NO (required for MARKET order) | Order Amount  |
+| clientOrderId | STRING | NO | Custom Order ID created by user |
 
 
 **The following example will demonstrate how to create a limit order**
@@ -64,17 +64,13 @@ Order Management
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | user's accountId |
-| orderId    | LONG    | NO | Order Id|
-| clientOrderId | STRING | NO | Order id pass by api user |
+| accountId | STRING | YES | Account ID |
+| orderId    | LONG    | NO | Order ID |
+| clientOrderId | STRING | NO | Custom Order ID pass by user |
 
 ```javascript
-The parameters orderId and clientOrderId require at least one to be selected.
-The single cancel order interface currently supports 3 parameters, among which accountId is mandatory.
-If either orderId or clientOrderId is to be chosen, the parameter rules are as follows:
-
-1. Cancellation is prioritized based on orderId. If both orderId and clientOrderId are provided,
-the order will be cancelled based only on the orderId.
+Either orderId or clientOrderId must be passed.
+If both orderId and clientOrderId are passed, clientOrderId will be ignored.
 ```
 
 ``` markdown
@@ -93,22 +89,18 @@ DELETE `/api/v1/spot/batch/order`
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | user's accountId |
+| accountId | STRING | YES | Account ID |
 | symbol    | STRING    | NO | symbol|
-| orderIds    | STRING    | NO | Multiple order numbers, separated by commas. eg:2000000074758463,2000000074758464|
+| orderIds    | STRING    | NO | Multiple order numbers, separated by commas. e.g. `2000000074758463,2000000074758464`|
 
 
 ```javascript
-Supports cancelling orders in batches, either based on symbol or specific orderIds specified by the user. If a symbol
+Either symbol or orderIds must be passed.
+If a symbol
 is specified, all orders for that symbol will be canceled. If order IDs are specified, up to 5 orders can be canceled
-at once.At least one of the two parameters, symbol or orderId, must be specified. If both parameters are specified,
-orders will be canceled based on the orderId first.
-
-The batch cancel order interface currently supports 3 parameters, with accountId being mandatory. Either orderIds
-or symbol must be provided. If both symbol and orderIds are specified, cancellation will only proceed based on orderIds.
- The order of operations is as follows:
-
-1. If both orderIds and symbol are provided, the orders will be cancelled based solely on the orderIds.
+at once.
+If both parameters are specified,
+symbol will be ignore.
 ```
 
 
@@ -136,16 +128,13 @@ or symbol must be provided. If both symbol and orderIds are specified, cancellat
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | user's accountId |
+| accountId | STRING | YES | Account ID |
 | orderId    | LONG    | NO | Order Id|
-| clientOrderId | STRING | NO | Order id pass by api user |
+| clientOrderId | STRING | NO | Custom Order ID created by user |
 
 ```
-The get User order list interface currently supports 3 parameters, with accountId being mandatory. Either orderId
-or clientOrderId must be provided. If both clientOrderId and orderId are specified, The get User order will only proceed based on orderId.
- The order of operations is as follows:
-
-1. If both orderId and clientOrderId are provided, the order will be searched based solely on the orderId.
+Either orderId or clientOrderId must be passed.
+If both orderId and clientOrderId are provided, clientOrderId will be ignored.
 ```
 
 ``` java
@@ -180,12 +169,12 @@ or clientOrderId must be provided. If both clientOrderId and orderId are specifi
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | user's accountId |
-| symbol | STRING | NO | Trading pair |
-| orderId | LONG | NO | order's id|
-| limit | INTEGER | NO | The number of items returned per query is 10 by default, with a maximum limit of 500 items.|
-| startTime    | LONG    | NO | StartTime in milliseconds ,eg:1678772870000。Based on order creation time.
-| endTime    | LONG    | NO | endTime in milliseconds ,eg:1678772870000。Based on order creation time.
+| accountId | STRING | YES | Account ID |
+| symbol | STRING | NO | Trading pair, e.g. `BTC-USDT` |
+| orderId | LONG | NO | Order ID |
+| limit | INTEGER | NO | The number of items returned by each query, default 10, max 500 |
+| startTime    | LONG    | NO | StartTime in milliseconds on order creation time, e.g. `1678772870000` |
+| endTime    | LONG    | NO | EndTime in milliseconds on order creation time, e.g. `1678772870000` |
 
 
 
@@ -242,10 +231,10 @@ or clientOrderId must be provided. If both clientOrderId and orderId are specifi
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| accountId | STRING | YES | user's accountId |
-| symbol | STRING | NO | Trading pair |
-| orderId | LONG | NO | order's id|
-| limit | INTEGER | NO | The number of items returned per query is 10 by default, with a maximum limit of 100 items. |
+| accountId | STRING | YES | Account ID |
+| symbol | STRING | NO | Trading pair, e.g. `BTC-USDT` |
+| orderId | LONG | NO | Order ID |
+| limit | INTEGER | NO | The number of items returned by each query, default 10, max 100  |
 
 
 
