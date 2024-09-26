@@ -15,7 +15,7 @@
 
 ## Basic Information
 
-1. [Getting Started](3. [Getting Started](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Getting%20Started.md))
+1. [Getting Started](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/1.%20Getting%20Started.md)
 
 2. [Api Key](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/2.%20Api%20Key.md)
 
