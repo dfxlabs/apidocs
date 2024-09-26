@@ -61,13 +61,13 @@ asyncio.run(connect_to_websocket())
 | --- | --- |
 |  WELCOME|Establish connection response |
 |  ACK| Subscription result response|
-|  PONG| heartbeat response|
-|  ERROR|error response |
+|  PONG| Heartbeat response|
+|  ERROR|Error response |
 |  MESSAGE|Message response after subscription |
-|  SUBSCRIBE| subscribe topic|
+|  SUBSCRIBE| Subscribe topic|
 |  UNSUBSCRIBE| Cancel subscribe |
 |  PING|Send heartbeat |
-|  BYE|disconnect |
+|  BYE|Disconnect |
 
 
 
@@ -82,19 +82,19 @@ asyncio.run(connect_to_websocket())
 | SPOT | TRADE | YES | immediately |  Trade update |
 
 
-### Public topic
+## Public topic
 
 
 | **TOPIC** | **SUBJECT** | **Mandatory LOGIN** | **Push frequency** | **DESCRIPTION** |
 | --- | --- | --- | --- |  --- |
-| spot_kline_${cycle} | SYMBOL.eg:`BTC-USDT` | NO | 1S | cycle。eg：`1m、3,、5m、15m、30m、1h、2h、4h、6h、8h、12h、1d、3d、1w、1M`, and Topic eg: spot_kline_cycle |
-| spot_trade | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol trade update |
-| spot_book_update | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol depth update(Incremental depth push) |
-| spot_depth5 | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol depth update, (local depth, first 5 levels)|
-| spot_depth10 | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol depth update, (local depth, first 10 levels)|
-| spot_depth20 | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol depth update, (local depth, first 20 levels)|
-| spot_depth50 | SYMBOL.eg:`BTC-USDT` | NO | immediately |  Symbol depth update, (local depth, first 50 levels)|
-| spot_24hr_ticker | SYMBOL.eg:`BTC-USDT` | NO | immediately |  24 hours market update |
+| spot_kline_${cycle} | SYMBOL e.g. `BTC-USDT` | NO | 1S | Cycle e.g. `1m、3,、5m、15m、30m、1h、2h、4h、6h、8h、12h、1d、3d、1w、1M`, and Topic e.g. spot_kline_1m |
+| spot_trade | SYMBOL e.g. `BTC-USDT`` | NO | immediately |  Symbol trade update |
+| spot_book_update | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update(Incremental depth push) |
+| spot_depth5 | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update (local depth, first 5 levels)|
+| spot_depth10 | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update (local depth, first 10 levels)|
+| spot_depth20 | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update (local depth, first 20 levels)|
+| spot_depth50 | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update (local depth, first 50 levels)|
+| spot_24hr_ticker | SYMBOL e.g. `BTC-USDT` | NO | immediately |  24 hours market update |
 
 
 
@@ -110,15 +110,171 @@ asyncio.run(connect_to_websocket())
 | topic | Subscription Channel |
 | subjects | Subscription Topics |
 
+# Example
+## Private topic
+### Subscribe User Order Data
+
+``` javascript
+{
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"SPOT",
+	"subjects":["ORDER"]
+}
+
+```
+
+`Response format`
+
+```javascript
+{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
+```
+
+
+``` javascript
+{
+	"id": "c6e7becf00654002bd6b4e6ee5c61d17",  
+	"type": "MESSAGE",  
+	"topic": "SPOT",   
+	"subject": "ORDER",
+	"sn": 0,
+	"body": {
+		"e": "orderUpdate",   //事件类型
+		"E": 1707122929996,   //事件时间
+		"s": "BTC-USDT",      //交易对
+		"se": 1680,           //序号
+		"i": "2000000001250133",   //订单ID
+		"c": " ",    //自定义订单ID
+		"u": 24956691,    //用户ID
+		"ai": "2",        //账户ID
+		"ci": "1",        //客户ID
+		"S": "BUY",       //方向
+		"p": "42532",     //价格
+		"q": "0.001",     //数量
+		"a": "42.532",    //金额
+		"X": "NEW",       //状态
+		"z": "0",         //成交量
+		"x": "0",         //成交额
+		"o": "LIMIT",     //订单类型
+		"st": " ",        //触发方向
+		"ss": " ",        //计划委托状态
+		"sp": " ",        //触发价
+		"f": " ",         //备注
+		"ct": 1707122929778,    //创建时间
+		"mt": 1707122929996     //修改时间
+	}
+}
+```
+
+### Subscribe User Trade Data
+
+``` javascript
+{
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"SPOT",
+	"subjects":["TRADE"]
+}
+
+```
+
+`Response format`
+
+```javascript
+{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
+```
+
+``` javascript
+{
+	"id": "19d645cc3d4b47c19e3f034097fc56e1",   
+	"type": "MESSAGE",  
+	"topic": "SPOT",    
+	"subjects": ["TRADE"],
+	"sn": 0,
+	"body": {
+		"e": "tradeUpdate",      //事件类型
+		"E": 1707125415443,      //事件时间
+		"s": "BTC-USDT",         //交易对
+		"i": "207",              //成交ID
+		"u": 24956691,           //用户ID
+		"ai": "2",               //账户ID
+		"oi": "2000000001250131",  //订单ID
+		"p": "42534",            //成交价
+		"q": "0.001",            //成交量
+		"S": "BUY",              //方向
+		"o": "LIMIT",            //类型
+		"t": 1707125415336,      //时间
+		"T": "42.534",           //成交额
+		"r": "MAKER",            //角色
+		"f": "0.000001",         //手续费
+		"fa": "BTC"              //手续费币种
+	}
+}
+```
+
+
+## Public Topic
+### Subscribe k-line
+
+``` javascript
+{
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"spot_kline_1m",
+	"subjects":["BTC-USDT"]
+}
+
+```
+
+`Response format`
+
+```javascript
+{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
+```
+
+`Recevie data format`
+``` javascript
+{
+	"id": "a42824af27dd4f79bf200e552c3f7b91",
+	"type": "MESSAGE",
+	"topic": "spot_kline_1m",  
+	"subject": "BTC-USDT",
+	"sn": 0,
+	"body": {  
+		"e": "kline",   //事件类型
+		"E": 1707118140000,  //事件时间
+		"s": "BTC-USDT",   //交易对
+		"k": {   //k线数据
+			"t": 1707118080000,   //k线开始时间
+			"T": 1707118139999,   //k线结束时间
+			"s": "BTC-USDT",   //交易对
+			"i": "1m",   //周期
+			"f":0, //first tradeId during the kline startTime and closeTime
+			"L":0, //last tradeId during the kline startTime and closeTime
+			"o": "1.1",  //开盘价
+			"c": "1.1",  //收盘价
+			"h": "1.1",  //最高价
+			"l": "1.1",  //最低价
+			"v": "0",    //成交量
+			"n": 0,      //交易笔数
+			"x": true,   //k线是否结束
+			"q": "0",    //成交额
+			"V": "0",    //taker 买入成交量
+			"Q": "0"     //taker 买入成交额
+		}
+	}
+}
+```
+
 ### Subscribe symbol latest trade data
 
 
 ``` javascript
 {
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"spot_trade",
-  "subjects":["BTC-USDT"]
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"spot_trade",
+	"subjects":["BTC-USDT"]
 }
 
 ```
@@ -132,23 +288,23 @@ asyncio.run(connect_to_websocket())
 ``` javascript
 
 {
-		"id": "9f4b9d0eb5a74a40b76bc3cdca05cb4e",
-		"type": "MESSAGE",                       
-		"topic": "spot_trade",                   
-		"subjects": ["BTC-USDT"],                
-		"sn": 0,
-		"body": {
-				"e": "trade",              //事件类型
-				"E": 1707126585893,        //事件时间
-				"s": "BTC-USDT",           //交易对
-				"t": 208,                  //成交ID
-				"p": "42533",              //成交价格
-				"q": "0.001",              //成交数量
-				"T": 1707126585679,        //成交时间
-        "b": 2000000275523028,     //买方订单id
-        "a": 2000000275531886,     //卖方订单id
-				"m": true                  //是否是maker买, isBuyMaker = trade.getTakerOrderSide() == OrderSide.SELL.getCode()
-		}
+	"id": "9f4b9d0eb5a74a40b76bc3cdca05cb4e",
+	"type": "MESSAGE",                       
+	"topic": "spot_trade",                   
+	"subjects": ["BTC-USDT"],                
+	"sn": 0,
+	"body": {
+		"e": "trade",              //事件类型
+		"E": 1707126585893,        //事件时间
+		"s": "BTC-USDT",           //交易对
+		"t": 208,                  //成交ID
+		"p": "42533",              //成交价格
+		"q": "0.001",              //成交数量
+		"T": 1707126585679,        //成交时间
+		"b": 2000000275523028,     //买方订单id
+		"a": 2000000275531886,     //卖方订单id
+		"m": true                  //是否是maker买, isBuyMaker = trade.getTakerOrderSide() == OrderSide.SELL.getCode()
+	}
 }
 
 ```
@@ -158,10 +314,10 @@ asyncio.run(connect_to_websocket())
 
 ``` javascript
 {
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"spot_depth5",
-  "subjects":["BTC-USDT"]
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"spot_depth5",
+	"subjects":["BTC-USDT"]
 }
 
 ```
@@ -202,66 +358,14 @@ asyncio.run(connect_to_websocket())
 }
 ```
 
-### Subscribe k-line
-
-``` javascript
-{
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"spot_kline_1m",
-  "subjects":["BTC-USDT"]
-}
-
-```
-
-`Response format`
-
-```javascript
-{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
-```
-
-`Recevie data format`
-``` javascript
-{
-		"id": "a42824af27dd4f79bf200e552c3f7b91",
-		"type": "MESSAGE",
-		"topic": "spot_kline_1m",  
-		"subject": "BTC-USDT",
-		"sn": 0,
-		"body": {  
-				"e": "kline",   //事件类型
-				"E": 1707118140000,  //事件时间
-				"s": "BTC-USDT",   //交易对
-				"k": {   //k线数据
-						"t": 1707118080000,   //k线开始时间
-						"T": 1707118139999,   //k线结束时间
-						"s": "BTC-USDT",   //交易对
-						"i": "1m",   //周期
-            "f":0, //first tradeId during the kline startTime and closeTime
-            "L":0, //last tradeId during the kline startTime and closeTime
-						"o": "1.1",  //开盘价
-						"c": "1.1",  //收盘价
-						"h": "1.1",  //最高价
-						"l": "1.1",  //最低价
-						"v": "0",    //成交量
-						"n": 0,      //交易笔数
-						"x": true,   //k线是否结束
-						"q": "0",    //成交额
-						"V": "0",    //taker 买入成交量
-						"Q": "0"     //taker 买入成交额
-				}
-		}
-}
-```
-
 ### Subscribe lately 24 Hour ticker
 
 ``` javascript
 {
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"spot_24hr_ticker",
-  "subjects":["BTC-USDT"]
+	"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
+	"type":"SUBSCRIBE",  
+	"topic":"spot_24hr_ticker",
+	"subjects":["BTC-USDT"]
 }
 
 ```
@@ -301,109 +405,8 @@ asyncio.run(connect_to_websocket())
 }
 ```
 
-### Subscribe User Order Data
 
-``` javascript
-{
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"SPOT",
-  "subjects":["ORDER"]
-}
-
-```
-
-`Response format`
-
-```javascript
-{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
-```
-
-
-``` javascript
-{
-		"id": "c6e7becf00654002bd6b4e6ee5c61d17",  
-		"type": "MESSAGE",  
-		"topic": "SPOT",   
-		"subject": "ORDER",
-		"sn": 0,
-		"body": {
-				"e": "orderUpdate",   //事件类型
-				"E": 1707122929996,   //事件时间
-				"s": "BTC-USDT",      //交易对
-				"se": 1680,           //序号
-				"i": "2000000001250133",   //订单ID
-				"c": " ",    //自定义订单ID
-				"u": 24956691,    //用户ID
-				"ai": "2",        //账户ID
-				"ci": "1",        //客户ID
-				"S": "BUY",       //方向
-				"p": "42532",     //价格
-				"q": "0.001",     //数量
-				"a": "42.532",    //金额
-				"X": "NEW",       //状态
-				"z": "0",         //成交量
-				"x": "0",         //成交额
-				"o": "LIMIT",     //订单类型
-				"st": " ",        //触发方向
-				"ss": " ",        //计划委托状态
-				"sp": " ",        //触发价
-				"f": " ",         //备注
-				"ct": 1707122929778,    //创建时间
-				"mt": 1707122929996     //修改时间
-		}
-}
-```
-
-### Subscribe User Trade Data
-
-``` javascript
-{
-  "id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd",
-  "type":"SUBSCRIBE",  
-  "topic":"SPOT",
-  "subjects":["TRADE"]
-}
-
-```
-
-`Response format`
-
-```javascript
-{"id":"af1183cd-f04c-4517-b563-2d3d3d7edbcd","type":"ACK"}
-```
-
-``` javascript
-{
-		"id": "19d645cc3d4b47c19e3f034097fc56e1",   
-		"type": "MESSAGE",  
-		"topic": "SPOT",    
-		"subjects": ["TRADE"],
-		"sn": 0,
-		"body": {
-				"e": "tradeUpdate",      //事件类型
-				"E": 1707125415443,      //事件时间
-				"s": "BTC-USDT",         //交易对
-				"i": "207",              //成交ID
-				"u": 24956691,           //用户ID
-				"ai": "2",               //账户ID
-				"oi": "2000000001250131",  //订单ID
-				"p": "42534",            //成交价
-				"q": "0.001",            //成交量
-				"S": "BUY",              //方向
-				"o": "LIMIT",            //类型
-				"t": 1707125415336,      //时间
-				"T": "42.534",           //成交额
-				"r": "MAKER",            //角色
-				"f": "0.000001",         //手续费
-				"fa": "BTC"              //手续费币种
-		}
-}
-```
-
-
-
-## How to unSubscribe Topic？
+## How to unsubscribe topic？
 
 `If you need to unsubscribe from a topic, you need to specify the topic. If you want to unsubscribe all users at once, neither the topic nor the subject needs to be provided.`
 ``` javascript
@@ -427,7 +430,7 @@ asyncio.run(connect_to_websocket())
 
 
 
-## How to disConnect？
+## How to disconnect？
 
 `If you need to tell the server that it needs to disconnect the current socket, you can send the following message`
 ``` javascript
