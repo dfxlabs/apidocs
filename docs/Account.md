@@ -51,7 +51,7 @@ User Api
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
 | accountId | STRING | YES | Account ID |
-| token             | STRING    | NO | Token Code, e.g. `ETH`
+| token             | STRING    | NO | Token code, e.g. `ETH`
 
 
 
