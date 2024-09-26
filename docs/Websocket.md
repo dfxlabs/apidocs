@@ -87,7 +87,7 @@ asyncio.run(connect_to_websocket())
 
 | **TOPIC** | **SUBJECT** | **Mandatory LOGIN** | **Push frequency** | **DESCRIPTION** |
 | --- | --- | --- | --- |  --- |
-| spot_kline_${cycle} | SYMBOL e.g. `BTC-USDT` | NO | 1S | Cycle e.g. `1m、3,、5m、15m、30m、1h、2h、4h、6h、8h、12h、1d、3d、1w、1M`, and Topic e.g. spot_kline_1m |
+| spot_kline_${cycle} | SYMBOL e.g. `BTC-USDT` | NO | 1S | Cycle e.g. `1m、3,、5m、15m、30m、1h、2h、4h、6h、8h、12h、1d、3d、1w、1M`, Topic e.g. spot_kline_1m |
 | spot_trade | SYMBOL e.g. `BTC-USDT`` | NO | immediately |  Symbol trade update |
 | spot_book_update | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update(Incremental depth push) |
 | spot_depth5 | SYMBOL e.g. `BTC-USDT` | NO | immediately |  Symbol depth update (local depth, first 5 levels)|
