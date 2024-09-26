@@ -36,7 +36,7 @@
 ###  API-KEY Management
 
 
-* Users have to log in the exchange website and apply for an API-KEY, please make sure to remember the following information when creating an API key:
+* Users have to log in the exchange website and apply for an API-KEY, please make sure to remember the following information when creating an API key, details will be discussed in [Authentication](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Authentication.md):
 
 * **EXCHANGE-API-KEY**: API access key
 * **Public Key**: The key used for signature authentication encryption, Uploaded by users themselves (visible to the application only)
