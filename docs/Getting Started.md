@@ -128,8 +128,8 @@ These terms will be used throughout the documentation, so it is recommended espe
 
 | **VALUE** | **DESCRIPTION** |
 | --- | --- |
-|  LIMIT| limit order|
-|  MARKET| market order|
+|  LIMIT| Limit order|
+|  MARKET| Market order|
 
 
 ### Order Side
