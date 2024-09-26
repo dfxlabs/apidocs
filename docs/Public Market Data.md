@@ -53,7 +53,7 @@
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair , eg: `BTC-USDT` |
+| symbol | STRING | YES | Trading pair , e.g. `BTC-USDT` |
 | limit | INTEGER | NO | The number of items returned by each query, default 10 |
 
 
