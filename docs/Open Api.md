@@ -68,6 +68,7 @@ Here's a way to generate an Ed25519 public and private key in the MacOS command 
 |/api/v1/spot/test/order| POST| Administrator、Trader|Test whether the order can be created｜
 |/api/v1/spot/order| POST| Administrator、Trader|Create order|
 |/api/v1/spot/order| DELETE| Administrator、Trader|Cancel order|
+|/api/v1/spot/batch/order| DELETE| Administrator、Trader|Batch cancel order|
 |/api/v1/spot/order| GET| Administrator、Trader|Search order|
 |/api/v1/spot/open_order| GET| Administrator、Trader|Get pending orders|
 |/api/v1/spot/finish_order| GET| Administrator、Trader|Get completed orders|
