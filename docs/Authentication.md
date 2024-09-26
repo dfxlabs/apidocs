@@ -14,9 +14,8 @@
 | Authentication Type | Description |
 | --- | --- |
 | MARKET_DATA | Endpoints are freely accessible |
-| TRADE | Endpoints requires sending a valid EXCHANGE-API-KEY and signature |
+| ORDER | Endpoints requires sending a valid EXCHANGE-API-KEY and signature |
 | USER_DATA | Endpoints requires sending a valid EXCHANGE-API-KEY and signature |
-| USER_STREAM | The endpoints requires sending a valid EXCHANGE-API-KEY |
 
 
 

@@ -17,8 +17,8 @@ Here's a way to generate an Ed25519 public and private key in the MacOS command 
 * 1.Generate private key + output content to console:
 
 	```javascript
-	openssl genpkey -algorithm ed25519 -outform DER -out private_key.der
-	openssl base64 -in private_key.der
+	openssl genpkey -algorithm ed25519 -out private_key.pem
+	cat private_key.pem
     ```
 
 	```javascript
@@ -32,20 +32,19 @@ Here's a way to generate an Ed25519 public and private key in the MacOS command 
 * 2.You will get the following content:
 
 	```javascript
-	MC4CAQAwBQYDK2VwBCIEIMAy/4rOEzkBqHLbb/zDxU9PKTKoY0F6kd+36/NYkLut
+	MC4CAQAwBQYDK2VwBCIEIE3cC2U0982hn5lbePlFjfaxLKSxSdkwzIr1H4dCBN6V
 	```
 
 * 3.Generate the public key + output the content to the console:
 	```javascript
-	openssl pkey -in private_key.der -pubout -outform DER -out public_key.der
-	openssl base64 -in public_key.der
+	openssl pkey -in private_key.pem -pubout -out public_key.pem
+	cat public_key.pem
 	```
 * 4.You will get the following content:
 
 	```javascript
-	MCowBQYDK2VwAyEAvge+jH1JYA576Z3uxZFbSu13diBFn3jFfsiglRBJbTM=
+	MCowBQYDK2VwAyEAjUsfgTzAktJvlhsz43RyWho+7NEK6u6+qJUIFlEWTWA=
 	```
-
 
 
 
