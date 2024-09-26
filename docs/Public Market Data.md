@@ -5,7 +5,7 @@
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair , eg: `BTC-USDT` |
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
 | limit | INTEGER | NO | The number of items returned by each query, default 10 |
 
 
@@ -86,11 +86,11 @@
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair , eg: `BTC-USDT` |
-| limit | INTEGER | NO | The number of items returned per query is 10 by default, with a maximum limit of 500 items. |
-| interval | STRING    | YES | kline type,eg:`M1, M3, M5, M15, M30, H1, H2, H4, H6, H8, H12, D1, W1, MON1`
-| startTime    | LONG    | NO | StartTime in milliseconds ,eg:1678772870000
-| endTime    | LONG    | NO | endTime in milliseconds ,eg:1678772870000
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
+| interval | STRING    | YES | kline type, e.g. `M1, M3, M5, M15, M30, H1, H2, H4, H6, H8, H12, D1, W1, MON1`
+| limit | INTEGER | NO | The number of items returned by each query, default 10, max 500 |
+| startTime    | LONG    | NO | StartTime in milliseconds, e.g. `1678772870000`
+| endTime    | LONG    | NO | endTime in milliseconds, e.g. `1678772870000`
 
 **If startTime and endTime are not provided, the server's default time will be used. For example, if querying minute-based K-line data with limit=10, the data for the last ten minutes will be retrieved. If querying daily K-line data with limit=20, the data for the last twenty days will be retrieved.**
 
@@ -122,7 +122,7 @@
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair , eg: `BTC-USDT` |
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
 
 
 
@@ -161,7 +161,7 @@ average market price. For more details, please refer to the DFX Labs Trading Rul
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair , eg: `BTC-USDT` |
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
 
 
 
@@ -183,7 +183,7 @@ average market price. For more details, please refer to the DFX Labs Trading Rul
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | YES | Trading pair, eg: `BTC-USDT` |
+| symbol | STRING | YES | Trading pair, e.g. `BTC-USDT` |
 
 
 
@@ -214,9 +214,8 @@ average market price. For more details, please refer to the DFX Labs Trading Rul
 
 | **PARAMETER** | **TYPE** | **Mandatory** | **DESCRIPTION** |
 | --- | --- | --- | --- |
-| symbol | STRING | NO | Trading pair, eg:`BTC-USD` |
-| clientType | STRING | YES | Client Type, eg:`OP,CP,IP,CR,IR` |
-
+| clientType | STRING | YES | Client Type, e.g. `OP, CP, IP, CR, IR` |
+| symbol | STRING | NO | Trading pair, e.g. `BTC-USD` |
 
 
 
