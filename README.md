@@ -21,11 +21,11 @@
 
 3. [Authentication](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/3.%20Authentication.md)
 
-4. [Market](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/4.%20Market.md)
+4. [Market Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/4.%20Market%20Endpoints.md)
 
-5. [Account](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/5.%20Account.md)
+5. [Account Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/5.%20Account%20Endpoints.md)
 
-6. [Order](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/6.%20Order.md)
+6. [Order Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/6.%20Order%20Endpoints.md)
 
 7. [Websocket](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/7.%20Websocket.md)
 
