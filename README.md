@@ -15,18 +15,18 @@
 
 ## Basic Information
 
-1. [Authentication](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Authentication.md)
+1. [Getting Started](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/1.%20Getting%20Started.md)
 
-2. [Error Codes](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Error%20Codes.md)
+2. [Api Key](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/2.%20Api%20Key.md)
 
-3. [Getting Started](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Getting%20Started.md)
+3. [Authentication](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/3.%20Authentication.md)
 
-4. [Open Api](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Open%20Api.md)
+4. [Market Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/4.%20Market%20Endpoints.md)
 
-5. [Order Management](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Order%20Management.md)
+5. [Account Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/5.%20Account%20Endpoints.md)
 
-6. [Public Market Data](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Public%20Market%20Data.md)
+6. [Order Endpoints](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/6.%20Order%20Endpoints.md)
 
-7. [Account](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Account.md)
+7. [Websocket](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/7.%20Websocket.md)
 
-8. [Websocket](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/Websocket.md)
+8. [Error Codes](https://github.com/dfxlabs/dfxlabs.github.io/blob/main/docs/8.%20Error%20Codes.md)
